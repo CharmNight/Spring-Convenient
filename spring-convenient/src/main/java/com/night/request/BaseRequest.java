@@ -1,4 +1,4 @@
 package com.night.request;
 
-public class BaseRequest {
+public interface BaseRequest {
 }

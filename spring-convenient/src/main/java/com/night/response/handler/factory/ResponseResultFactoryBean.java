@@ -1,7 +1,15 @@
 package com.night.response.handler.factory;
 
 import com.night.response.ResultBean.Result;
-import com.night.response.handler.factory.FactoryResult;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BeanPropertyBindingResult;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.method.support.ModelAndViewContainer;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedReader;
+import java.io.IOException;
 
 /**
  *
@@ -12,7 +20,7 @@ import com.night.response.handler.factory.FactoryResult;
 public class ResponseResultFactoryBean implements FactoryResult {
 
 	@Override
-	public Object buildResult(Object returnValue, Class clazz) {
+	public Object buildResult(Object returnValue, Class clazz, ModelAndViewContainer mavContainer) {
 		Result result = null;
 		try {
 			result = (Result) clazz.newInstance();
@@ -21,6 +29,13 @@ public class ResponseResultFactoryBean implements FactoryResult {
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		}
+		ModelMap defaultModel = mavContainer.getDefaultModel();
+		defaultModel.forEach((item, val)->{
+			System.out.println(item);
+			System.out.println(val);
+		});
+		BeanPropertyBindingResult o = (BeanPropertyBindingResult)mavContainer.getDefaultModel().get("org.springframework.validation.BindingResult.userRequest");
+		Object target = o.getTarget();
 
 		result.setData(returnValue);
 		result.setMessage("");
