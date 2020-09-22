@@ -5,6 +5,8 @@ package com.night.response.ResultBean;
  *
  * 默认的Response 返回格式
  *
+ * 所有 返回必须 实现{@link Result}
+ *
  * @author night
  */
 public class FrameworkResult implements Result {
