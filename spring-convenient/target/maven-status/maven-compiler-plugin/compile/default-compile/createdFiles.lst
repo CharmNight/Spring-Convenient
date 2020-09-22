@@ -1,0 +1,9 @@
+com/night/controller/TestController.class
+com/night/utils/HttpRequestUtils.class
+com/night/request/BaseRequest.class
+com/night/response/PageResult.class
+com/night/response/ResponseResult.class
+com/night/response/ResponseResultIntrospector.class
+com/night/response/Result.class
+com/night/response/FrameworkResult.class
+com/night/SpringConvenientApplication.class
